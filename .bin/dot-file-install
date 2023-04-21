@@ -1,0 +1,23 @@
+#!/bin/bash
+git clone --bare git@github.com:NicolasBoulard/dot-files.git $HOME/.dot-files
+function config {
+   /usr/bin/git --git-dir=$HOME/.dot-files/ --work-tree=$HOME $@
+}
+mkdir -p .config-backup
+config checkout
+if [ $? = 0 ]; then
+  echo "Checked out config.";
+  else
+    echo "Backing up pre-existing dot files.";
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+fi;
+config checkout
+config config status.showUntrackedFiles no
+
+# Run additionnals installations
+echo "Running additionnal installation"
+bash ~/.bin/additionnal/install-exa
+
+# Install system depencences by running
+sudo apt update
+cat ~/.bin/additionnal/requirements.system | xargs sudo apt install -y
