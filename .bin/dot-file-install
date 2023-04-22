@@ -17,6 +17,7 @@ config config status.showUntrackedFiles no
 # Run additionnals installations
 echo "Running additionnal installation"
 bash ~/.bin/additionnal/install-exa
+bash ~/.bin/additionnal/install-git
 
 # Install system depencences by running
 sudo apt update

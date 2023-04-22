@@ -122,8 +122,11 @@ source $ZSH/oh-my-zsh.sh
 [[ ! -f ~/.config/p10k/.p10k.zsh ]] || source ~/.config/p10k/.p10k.zsh
 
 # Custom aliases
-alias config='/usr/bin/git --git-dir=$HOME/.dot-files/ --work-tree=$HOME'
+alias config='git --git-dir=$HOME/.dot-files/ --work-tree=$HOME'
 alias ls='exa -l'
 alias ll='exa -lia'
 alias tree='exa -lia --tree'
 alias top='htop'
+
+# Run the dot file git check
+setsid dot-file-check $(tty) &

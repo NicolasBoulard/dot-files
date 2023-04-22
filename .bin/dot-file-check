@@ -1,0 +1,8 @@
+#!/bin/zsh
+# Pipeception maybe it can be optimized (my brain is liquid at this hour 🌙)
+TTY=$1
+REMOTE_COMMIT=$(git --git-dir=$HOME/.dot-files/ --work-tree=$HOME ls-remote --sort=committerdate $(git --git-dir=$HOME/.dot-files/ --work-tree=$HOME config --get remote.origin.url) | grep "refs/heads/master" | tr "\t" "\n" | head -n1)
+LOCAL_COMMIT=$(git --git-dir=$HOME/.dot-files/ --work-tree=$HOME rev-parse master)
+if [ "$REMOTE_COMMIT" != "$LOCAL_COMMIT" ]; then
+    echo $fg_bold[red] "⚠️ Be careful you may be not up to date of your dot-files ⚠️" >> $TTY
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+GIT_PACKAGE_URL="https://github.com/git/git/archive/refs/heads/master.zip"
+echo "Let's install git because APT has older version 🧐"
+wget -P /tmp -q $GIT_PACKAGE_URL
+unzip -d /tmp/$(basename "$GIT_PACKAGE_URL")_dir /tmp/$(basename "$GIT_PACKAGE_URL")
+sudo apt-get update
+sudo apt-get install -y make libssl-dev libghc-zlib-dev libcurl4-gnutls-dev libexpat1-dev gettext unzip
+cd /tmp/$(basename "$GIT_PACKAGE_URL")_dir/git-master/
+sudo make prefix=/usr/local all
+sudo make prefix=/usr/local install
+echo "Git installed with version $(git --version) ! "
+
+# Get input user name
+echo "Enter your GIT user name (config --global user.name): "
+read GIT_USER_NAME
+git config --global user.name $GIT_USER_NAME
+
+# Get input user email
+echo "Enter your GIT user email (config --global user.email): "
+read GIT_USER_EMAIL
+git config --global user.email $GIT_USER_EMAIL
