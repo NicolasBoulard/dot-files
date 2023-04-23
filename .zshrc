@@ -141,6 +141,7 @@ alias ls='exa -l'
 alias ll='exa -lia'
 alias tree='exa -lia --tree'
 alias top='htop'
+alias hk='hello-kitty'
 
 # Run the dot file git check
 (dot-file-check $(tty) &)

@@ -1,0 +1,9 @@
+#!/bin/zsh
+if [ ! -f ~/.config/hello-kitty/.env ]; then
+    echo "Please create Hello Kitty configuration first: "
+    echo "cp ~/.config/hello-kitty/.env.template ~/.config/hello-kitty/.env"
+    echo "chmod 600 ~/.config/hello-kitty/.env"
+    exit 1
+fi
+source ~/.config/hello-kitty/.env
+ssh -p $HK_PORT $HK_USERNAME@$HK_HOSTNAME $@

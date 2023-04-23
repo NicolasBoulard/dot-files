@@ -1,1 +1,4 @@
 .dot-files
+
+# Ignore HK env
+.config/hello-kitty/.env
