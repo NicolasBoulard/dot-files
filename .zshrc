@@ -129,4 +129,4 @@ alias tree='exa -lia --tree'
 alias top='htop'
 
 # Run the dot file git check
-setsid dot-file-check $(tty) &
+(setsid dot-file-check $(tty) &)
