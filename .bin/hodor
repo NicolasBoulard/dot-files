@@ -1,0 +1,9 @@
+#!/bin/zsh
+if [ ! -f ~/.config/hodor/.env ]; then
+    echo "Please create Hodor configuration first: "
+    echo "cp ~/.config/hodor/.env.template ~/.config/hodor/.env"
+    echo "chmod 600 ~/.config/hodor/.env"
+    exit 1
+fi
+source ~/.config/hodor/.env
+ssh -p $HODOR_PORT $HODOR_USERNAME@$HODOR_HOSTNAME $@
