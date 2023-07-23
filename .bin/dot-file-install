@@ -29,6 +29,9 @@ sudo apt update
 echo "Install system requirements"
 cat ~/.bin/additionnal/requirements.system | xargs sudo apt install -y
 
+echo "Install Ansible"
+bash ~/.bin/additionnal/install-ansible
+
 echo "Install oh-my-zsh"
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
