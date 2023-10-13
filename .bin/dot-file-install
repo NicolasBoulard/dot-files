@@ -2,7 +2,7 @@
 
 # Install requirements
 echo "Install requirements"
-wget -O - https://raw.githubusercontent.com/NicolasBoulard/dot-files/master/.bin/install-git | bash
+wget -O - https://raw.githubusercontent.com/NicolasBoulard/dot-files/master/.bin/additionnal/install-git | bash
 
 echo "Clone dot-files repo"
 git clone --bare git@github.com:NicolasBoulard/dot-files.git $HOME/.dot-files
