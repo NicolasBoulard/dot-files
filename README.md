@@ -3,6 +3,9 @@ This is my dot files and settings. This repo also include the installation part 
 
 ## Requirements ⚙️
 Follow steps on powerlevel10k [here](https://github.com/romkatv/powerlevel10k/blob/master/font.md#manual-font-installation) to install font **Meslogs NF**
+- openssh-server
+- wget
+- unzip 
 
 ## How to install 🛠️
 Simply run this command to install my dot files `wget -O - https://raw.githubusercontent.com/NicolasBoulard/dot-files/master/.bin/dot-file-install | bash` as normal user
