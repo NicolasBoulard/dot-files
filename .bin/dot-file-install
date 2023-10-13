@@ -34,6 +34,7 @@ bash ~/.bin/additionnal/install-ansible
 
 echo "Install oh-my-zsh"
 KEEP_ZSHRC=yes
+CHSH=yes
 sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 echo "Install p10k theme"
