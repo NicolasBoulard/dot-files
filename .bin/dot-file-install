@@ -33,8 +33,13 @@ echo "Install Ansible"
 bash ~/.bin/additionnal/install-ansible
 
 echo "Install oh-my-zsh"
+wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh
 export CHSH=yes
-sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
+export KEEP_ZSHRC=yes
+export RUNZSH=no
+chmod u+x install.sh
+./install.sh
+rm install.sh
 
 echo "Install p10k theme"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
