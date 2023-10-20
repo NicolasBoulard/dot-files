@@ -1,7 +1,7 @@
 #!/bin/bash
 wget -q https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip -O /tmp
-unzip -d /tmp/exa-linux-x86_64-v0.10.1 /tmp/exa-linux-x86_64-v0.10.1.zip
+unzip -o -d /tmp/exa-linux-x86_64-v0.10.1 /tmp/exa-linux-x86_64-v0.10.1.zip
 echo "Exa unzipped successfully"
-sudo cp /tmp/exa-linux-x86_64-v0.10.1/bin/* /usr/local/bin/
-sudo cp /tmp/exa-linux-x86_64-v0.10.1/completions/exa.zsh /usr/local/share/zsh/site-functions/
+sudo cp -rf /tmp/exa-linux-x86_64-v0.10.1/bin/* /usr/local/bin/
+sudo cp -rf /tmp/exa-linux-x86_64-v0.10.1/completions/exa.zsh /usr/local/share/zsh/site-functions/
 echo "Exa is now installed !"
