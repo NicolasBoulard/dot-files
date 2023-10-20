@@ -5,24 +5,21 @@ echo "Install requirements"
 wget -O - https://raw.githubusercontent.com/NicolasBoulard/dot-files/master/.bin/additionnal/install-git | bash
 
 echo "Clone dot-files repo"
-git init
-git remote add origin git@github.com:NicolasBoulard/dot-files.git
-git pull origin master
-#git clone git@github.com:NicolasBoulard/dot-files.git $HOME/.dot-files
+git clone --bare git@github.com:NicolasBoulard/dot-files.git $HOME/.dot-files
 
 function config {
    git --git-dir=$HOME/.dot-files/ --work-tree=$HOME $@
 }
 mkdir -p .config-backup
-git checkout
+config checkout
 if [ $? = 0 ]; then
   echo "Checked out config.";
   else
     echo "Backing up pre-existing dot files.";
-    git checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
+    config checkout 2>&1 | egrep "\s+\." | awk {'print $1'} | xargs -I{} mv {} .config-backup/{}
 fi;
-git checkout
-git config status.showUntrackedFiles no
+config checkout
+config config status.showUntrackedFiles no
 
 echo "Install additionnal installation"
 bash ~/.bin/additionnal/install-exa
@@ -36,11 +33,8 @@ echo "Install Ansible"
 bash ~/.bin/additionnal/install-ansible
 
 echo "Install oh-my-zsh"
-export KEEP_ZSHRC=yes
 export CHSH=yes
-wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O .oh-my-zsh-install
-chmod +x .oh-my-zsh-install
-./.oh-my-zsh-install
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"
 
 echo "Install p10k theme"
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
@@ -49,3 +43,6 @@ echo "Install ZSH custom plugins"
 git clone https://github.com/zsh-users/zsh-completions ${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+
+echo "Set custom .zshrc"
+mv .zshrc.pre-oh-my-zsh .zshrc
