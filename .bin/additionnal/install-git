@@ -11,12 +11,3 @@ sudo make prefix=/usr/local all
 sudo make prefix=/usr/local install
 echo "Git installed with version $(git --version) ! "
 
-# Get input user name
-echo "Enter your GIT user name (config --global user.name): "
-read GIT_USER_NAME
-git config --global user.name $GIT_USER_NAME
-
-# Get input user email
-echo "Enter your GIT user email (config --global user.email): "
-read GIT_USER_EMAIL
-git config --global user.email $GIT_USER_EMAIL
