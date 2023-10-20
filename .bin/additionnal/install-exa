@@ -1,5 +1,6 @@
 #!/bin/bash
-wget -q https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip -O /tmp
+EXA_PACKAGE_URL="https://github.com/ogham/exa/releases/download/v0.10.1/exa-linux-x86_64-v0.10.1.zip"
+wget -q $EXA_PACKAGE_URL -P /tmp
 unzip -o -d /tmp/exa-linux-x86_64-v0.10.1 /tmp/exa-linux-x86_64-v0.10.1.zip
 echo "Exa unzipped successfully"
 sudo cp -rf /tmp/exa-linux-x86_64-v0.10.1/bin/* /usr/local/bin/
